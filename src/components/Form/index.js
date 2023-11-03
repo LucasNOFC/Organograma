@@ -2,6 +2,7 @@ import styled from "styled-components";
 import TextCamp from "../TextCamp";
 import DropdownList from "../DropdownList";
 import Button from "../Button";
+import { useState } from "react";
 
 
 const SectionContainer = styled.section`
@@ -21,7 +22,7 @@ const FormContainer = styled.form`
 const TitleComponent = styled.h1`
 `
 
-const Form = () => {
+const Form = (props) => {
 
     const teams = [
         'Programação',
@@ -33,14 +34,53 @@ const Form = () => {
         'Inovação e Gestão'
     ]
 
+    const [image, setImage] = useState('')
+    const [name, setName] = useState('')
+    const [hole, setHole] = useState('')
+    const [team, setTeam] = useState('')
+
+
+    const onSubmit = (event) => {
+        event.preventDefault();
+        props.newRegisteredWorker({
+            name,
+            hole,
+            image,
+            team
+        })
+    }
+
     return(
         <SectionContainer>
-            <FormContainer>
+            <FormContainer onSubmit={onSubmit}>
                 <TitleComponent>Preencha os dados para criar o card do colaborador</TitleComponent>
-                <TextCamp label="Nome" placeholder="Digite o nome"/>
-                <TextCamp label="Cargo" placeholder="Digite o cargo"/>
-                <TextCamp label="Imagem" placeholder="Digite o endereço da imagem"/>
-                <DropdownList label="Time" itens={teams}/>
+                <TextCamp 
+                essential={true} 
+                label="Nome" 
+                placeholder="Digite o nome"
+                value={name}
+                onChanged={value => setName(value)}/>
+
+                <TextCamp 
+                essential={true}
+                label="Cargo" 
+                placeholder="Digite o cargo"
+                value={hole}
+                onChanged={value => setHole(value)}/>
+
+                <TextCamp 
+                essential={true} 
+                label="Imagem" 
+                placeholder="Digite o endereço da imagem"
+                value={image}
+                onChanged={value => setImage(value)}/>
+
+                <DropdownList
+                     label="Time" 
+                     essential={true} 
+                     itens={teams}
+                     value={team}
+                     onChanged={value => setTeam(value)}/>
                 <Button text="Criar Card"/>
             </FormContainer>
         </SectionContainer>

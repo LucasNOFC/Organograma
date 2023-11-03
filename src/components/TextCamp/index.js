@@ -21,13 +21,18 @@ const InputComponent = styled.input`
 `
 
 const TextCamp = (props) => {
+    
+    const onTyped = (event) => {
+        props.onChanged(event.target.value)
+    }
+
 
     const modifiedPlaceholder = `${props.placeholder}...` 
 
     return(
         <MainContainer>
             <LabelComponent>{props.label}</LabelComponent>
-            <InputComponent placeholder={modifiedPlaceholder}/>
+            <InputComponent value = {props.value} onChange={onTyped} required={props.essential} placeholder={modifiedPlaceholder}/>
         </MainContainer>
     )
 }
