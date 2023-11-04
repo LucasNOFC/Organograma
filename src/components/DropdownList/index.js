@@ -25,6 +25,7 @@ const DropdownList = (props) => {
         <div>
             <LabelComponent> {props.label} </LabelComponent>
             <SelectComponent onChange={event => props.onChanged(event.target.value)} required={props.required} value={props.value}>
+                <option value=''></option>
                 {props.itens.map(item => {
                     return <OptionComponent required={props.essential} key={item}>{item}</OptionComponent>
                 })}

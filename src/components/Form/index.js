@@ -23,17 +23,7 @@ const TitleComponent = styled.h1`
 `
 
 const Form = (props) => {
-
-    const teams = [
-        'Programação',
-        'Front-End',
-        'Data-Science',
-        'Devops',
-        'Ux e Design',
-        'Mobile',
-        'Inovação e Gestão'
-    ]
-
+    
     const [image, setImage] = useState('')
     const [name, setName] = useState('')
     const [hole, setHole] = useState('')
@@ -48,6 +38,11 @@ const Form = (props) => {
             image,
             team
         })
+
+        setName('')
+        setHole('')
+        setImage('')
+        setTeam('')
     }
 
     return(
@@ -78,7 +73,7 @@ const Form = (props) => {
                 <DropdownList
                      label="Time" 
                      essential={true} 
-                     itens={teams}
+                     itens={props.teams}
                      value={team}
                      onChanged={value => setTeam(value)}/>
                 <Button text="Criar Card"/>
