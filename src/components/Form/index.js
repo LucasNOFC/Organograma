@@ -32,7 +32,7 @@ const Form = (props) => {
 
     const onSubmit = (event) => {
         event.preventDefault();
-        props.newRegisteredWorker({
+        props.newRegisteredTier({
             name,
             hole,
             image,
@@ -48,18 +48,18 @@ const Form = (props) => {
     return(
         <SectionContainer>
             <FormContainer onSubmit={onSubmit}>
-                <TitleComponent>Preencha os dados para criar o card do colaborador</TitleComponent>
+                <TitleComponent>Preencha os dados do item para o TierList</TitleComponent>
                 <TextCamp 
                 essential={true} 
                 label="Nome" 
-                placeholder="Digite o nome"
+                placeholder="Digite o nome do item"
                 value={name}
                 onChanged={value => setName(value)}/>
 
                 <TextCamp 
                 essential={true}
-                label="Cargo" 
-                placeholder="Digite o cargo"
+                label="Tipo do item" 
+                placeholder="Digite o tipo do item"
                 value={hole}
                 onChanged={value => setHole(value)}/>
 
@@ -71,7 +71,7 @@ const Form = (props) => {
                 onChanged={value => setImage(value)}/>
 
                 <DropdownList
-                     label="Time" 
+                     label="Tier" 
                      essential={true} 
                      itens={props.teams}
                      value={team}

@@ -25,11 +25,11 @@ const TeamContainer = styled.div`
 
 const Team = (props) => {
     return (
-        (props.workers.length > 0) ? <SectionContainer style={{backgroundColor: props.secondColor}}>
+        (props.tiers.length > 0) ? <SectionContainer style={{backgroundColor: props.secondColor}}>
             <TitleComponent style={{borderColor: props.color }}>
                 {props.name}
             </TitleComponent>
-            <TeamContainer>{props.workers.map( workers => <Card  color={workers.color} key={workers.name} name={workers.name} hole={workers.hole} image={workers.image}/>)}</TeamContainer>
+            <TeamContainer>{props.tiers.map( tiers => <Card  key={tiers.name} name={tiers.name} color={props.color} hole={tiers.hole} image={tiers.image}/>)}</TeamContainer>
         </SectionContainer> : ''
     )
 }

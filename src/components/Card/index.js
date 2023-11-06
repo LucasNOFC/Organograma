@@ -41,9 +41,14 @@ padding: 0 16px;
 
 
 const Card = (props) => {
+
+    const color = props.color;
+
+    console.log("A cor é: " + color);
+
     return(
         <CardContainer>
-            <CardComponentLogo style= {{backgroundColor: props.color}}>
+            <CardComponentLogo style={{backgroundColor: props.color}}>
                 <CardComponentImage src={props.image} alt={props.name}/>
             </CardComponentLogo>
 
@@ -59,5 +64,6 @@ const Card = (props) => {
         </CardContainer>
     )
 }
+
 
 export default Card;

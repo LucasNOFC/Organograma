@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Banner from './components/Banner';
 import Form from './components/Form';
 import Team from './components/Team';
 
@@ -9,54 +8,48 @@ function App() {
 
   const teams = [
     {
-      name: 'Programação',
-      color: '#57c278',
-      secondColor: '#d9f7e9'
+      name: 'OP',
+      color: '#FF0000',
+      secondColor: '#FF7D7D'
     },    {
-      name: 'Front-End',
-      color: '#82CFFA',
-      secondColor: '#E8F8FF'
+      name: 'Muito bom',
+      color: '#FF5900',
+      secondColor: '#FFA270'
     },    {
-      name: 'Data-Science',
-      color: '#A6D157',
-      secondColor: '#F0F8E2'
+      name: 'Bom',
+      color: '#ECFF00',
+      secondColor: '#F4FF6D'
     },    {
-      name: 'Devops',
-      color: '#E06B69',
-      secondColor: '#FDE7E8'
+      name: 'Ruim',
+      color: '#8E8E8E',
+      secondColor: '#4E4E4E'
     },    {
-      name: 'Ux e Design',
-      color: '#D86EBF',
-      secondColor: '#FAE5F5'
+      name: 'Muito Ruim',
+      color: '#4B2300',
+      secondColor: '#4E3D2E'
     },    {
-      name: 'Mobile',
-      color: '#FEBA05',
-      secondColor: '#FFF5D9'
-    },    {
-      name: 'Inovação e Gestão',
-      color: '#FF8A29',
-      secondColor: '#FFEEDF'
-    },
+      name: 'Porque?',
+      color: '#00FF42',
+      secondColor: '#B5FFC8'
+    }
   ]
 
-  const [workers, setWorkers] = useState([])
+  const [tiers, setTiers] = useState([])
 
-  const newRegisteredWorker = (worker) => {
-    console.log(worker)
-    setWorkers([...workers, worker])
+  const newRegisteredTier = (tier) => {
+    setTiers([...tiers, tier])
 
   }
   return (
     <div className="App">
-      <Banner/>
-      <Form teams ={teams.map(team => team.name)} 
-      newRegisteredWorker={worker => newRegisteredWorker(worker)}/>
-      {teams.map(team => <Team 
+    <Form teams ={teams.map(team => team.name)} 
+      newRegisteredTier={tier => newRegisteredTier(tier)}/>
+      {teams.map((team) => <Team 
       key={team.name}
       name={team.name}
       color={team.color}
       secondColor={team.secondColor}
-      workers={workers.filter(worker => worker.team === team.name)}
+      tiers={tiers.filter(tier => tier.team === team.name)}
       />)}
     </div>
   );
